@@ -1,0 +1,3 @@
+import {ProjectForm} from "@/components/dashboard/Forms";
+import {requirePortfolio} from "@/lib/auth";
+export default async function NewProject(){const {portfolio,supabase}=await requirePortfolio();const {data:categories}=await supabase.from("project_categories").select("id,name,slug,sort_order").eq("portfolio_id",portfolio.id).order("sort_order");return <main className="dashboard-content"><div className="page-title-row"><div><span className="eyebrow">PROJECT MANAGER</span><h1>Add a project</h1><p>Import from GitHub, write a clear case study and add screenshots after saving.</p></div></div><section className="panel-card form-panel"><ProjectForm categories={categories||[]}/></section></main>}

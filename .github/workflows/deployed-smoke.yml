@@ -1,0 +1,39 @@
+name: Deployed site read-only checks
+on:
+  workflow_dispatch:
+    inputs:
+      deployment_url:
+        description: 'HTTPS staging root URL, e.g. https://staging.example.com/'
+        type: string
+        required: true
+      root_domain:
+        description: 'Optional canonical root domain for wildcard tests'
+        type: string
+        required: false
+      sample_handle:
+        description: 'Optional published staging portfolio handle'
+        type: string
+        required: false
+      project_slug:
+        description: 'Optional public project slug for a sample handle'
+        type: string
+        required: false
+permissions:
+  contents: read
+jobs:
+  probe:
+    environment: staging
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Read-only hosted release smoke tests
+        run: node scripts/release-smoke.mjs
+        env:
+          DEVFOLIO_PROBE_URL: ${{ inputs.deployment_url }}
+          DEVFOLIO_ROOT_DOMAIN: ${{ inputs.root_domain }}
+          DEVFOLIO_PUBLIC_HANDLE: ${{ inputs.sample_handle }}
+          DEVFOLIO_PROJECT_SLUG: ${{ inputs.project_slug }}

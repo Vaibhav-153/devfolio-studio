@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Devfolio Studio — Phase 3 Visual Designer</title>
+<link rel="stylesheet" href="./style.css"/></head>
+<body>
+<div id="app" class="app-shell">
+  <header class="app-topbar">
+    <div class="brand-area"><div class="brand-mark">ds.</div><div class="brand-label"><strong>Devfolio Studio</strong><small>VISUAL WORKSPACE <span class="beta">PHASE 03</span></small></div></div>
+    <div class="top-context"><span class="context-dot"></span> Portfolio / Home page <span class="readonly-context">· Local prototype</span></div>
+    <div class="top-actions">
+      <span id="saveStatus" class="save-status" aria-live="polite">Saved locally</span>
+      <div class="top-action-divider"></div>
+      <button id="undo" class="top-button" title="Undo change" aria-label="Undo change">Undo</button>
+      <button id="redo" class="top-button" title="Redo change" aria-label="Redo change">Redo</button>
+      <div class="top-action-divider"></div>
+      <div class="device-group" aria-label="Screen preview"><button data-device="desktop" class="active">Desktop</button><button data-device="tablet">Tablet</button><button data-device="mobile">Mobile</button></div>
+      <button id="previewToggle" class="top-button accent-outline">Preview</button>
+      <button id="publish" class="top-button primary">Publish demo</button>
+    </div>
+  </header>
+  <div class="editor-grid" id="editorGrid">
+    <aside id="leftPanel" class="left-panel">
+      <div class="left-panel-head"><div class="left-panel-eyebrow">WORKSPACE</div><h2>Build your portfolio</h2><p>Start with a design. Make it yours.</p></div>
+      <div class="nav-tabs" role="tablist" aria-label="Workspace tools"><button data-tab="blocks" class="active">Blocks</button><button data-tab="layers">Layers</button><button data-tab="content">Content</button><button data-tab="design">Design</button></div>
+      <div id="sideBody" class="side-body"></div>
+      <div class="left-footer"><span class="status-bubble"></span> Local editing · No account needed</div>
+    </aside>
+    <section class="center-panel" aria-label="Portfolio canvas">
+      <div class="canvas-toolbar"><div><span class="crumb">PAGE 01 / HOME</span><strong id="canvasHeading">Visual canvas</strong></div><div class="canvas-toolbar-right"><span id="viewportLabel">Desktop / 1100px</span><button id="snapToggle" class="chip-button active">Snap grid: On</button><button id="reset" class="chip-button">Reset</button></div></div>
+      <div class="canvas-scroller" id="canvasScroller"><div id="canvasPaper" class="canvas-paper"><div id="portfolioRoot"></div></div></div>
+      <div class="canvas-footer"><span>Preview and publish are separate from your editable draft</span><div><button id="viewPublished" class="footer-button" disabled>View local publication</button><button id="downloadDraft" class="footer-button">Export JSON</button><label class="footer-button file-button">Import JSON<input id="importDraft" type="file" accept=".json,application/json"/></label></div></div>
+    </section>
+    <aside id="rightPanel" class="right-panel"><div class="inspector-title"><small>PROPERTIES</small><h2 id="inspectorHeading">Choose an element</h2><p id="inspectorHint">Select a section on the canvas to edit its appearance.</p></div><div id="inspectorBody" class="inspector-body"></div></aside>
+  </div>
+  <div class="notice-bar"><span>DEMO MODE</span> Edits, draft autosave, and the published snapshot exist only in this browser. This is not a live portfolio-hosting service.</div>
+</div>
+<div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+<script src="./app.js"></script>
+</body></html>

@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "lib": [
+      "ES2022",
+      "DOM"
+    ],
+    "strict": true,
+    "noEmit": true,
+    "skipLibCheck": true
+  },
+  "include": [
+    "../lib/beta-feedback.ts",
+    "../lib/content.ts",
+    "../lib/models.ts",
+    "../lib/validation.ts",
+    "../lib/editor-ops.ts",
+    "../lib/publishing/media.ts",
+    "../lib/publishing/urls.ts",
+    "./phase4_globals.d.ts"
+  ]
+}

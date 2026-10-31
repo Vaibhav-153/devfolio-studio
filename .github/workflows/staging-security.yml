@@ -1,0 +1,25 @@
+name: Staging account isolation tests
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  staging-smoke:
+    environment: staging
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm ci --no-fund --no-audit
+      - name: Run destructive tests on disposable STAGING project only
+        run: node scripts/staging-smoke.mjs
+        env:
+          STAGING_SUPABASE_PROJECT_REF: ${{ vars.STAGING_SUPABASE_PROJECT_REF }}
+          DEVFOLIO_TEST_ENV: staging
+          STAGING_TEST_CONFIRM: CREATE_AND_DELETE_TEST_USERS
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.STAGING_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.STAGING_SUPABASE_PUBLISHABLE_KEY }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.STAGING_SERVICE_ROLE_KEY }}

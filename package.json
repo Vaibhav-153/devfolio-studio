@@ -1,0 +1,49 @@
+{
+  "name": "devfolio-studio",
+  "version": "0.6.0",
+  "private": true,
+  "description": "Devfolio Studio Phase 6 - deployment preflight, private beta feedback and hosted release verification",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test:contracts": "python3 tests/check_contracts.py",
+    "test:unit": "node --test tests/unit_validation.cjs",
+    "test:content": "node --test tests/test_content.cjs",
+    "test:phase2": "python3 tests/check_phase2_contracts.py",
+    "typecheck:pure": "tsc -p tests/tsconfig.pure.json",
+    "test:phase3": "node --test tests/unit_validation.cjs tests/test_content.cjs tests/phase3_editor.cjs",
+    "test:browser-phase3": "python3 tests/browser_phase3.py",
+    "test:syntax": "node tests/check_ts_syntax.cjs",
+    "test:phase4": "node --test tests/unit_validation.cjs tests/test_content.cjs tests/phase3_editor.cjs tests/phase4_publishing.cjs",
+    "test:phase5": "node --test tests/unit_validation.cjs tests/test_content.cjs tests/phase3_editor.cjs tests/phase4_publishing.cjs tests/phase5_security.cjs",
+    "verify:phase5": "python3 tests/check_phase5_contracts.py",
+    "verify:all": "npm run test:phase5 && npm run typecheck:pure && npm run test:syntax && npm run test:contracts && npm run test:phase2 && python3 tests/check_phase4_contracts.py && npm run verify:phase5",
+    "smoke:staging": "node scripts/staging-smoke.mjs",
+    "test:phase6": "node --test tests/phase6_preflight.test.mjs tests/phase6_feedback.test.cjs tests/phase6_smoke.test.mjs tests/phase6_staging_guard.test.mjs",
+    "preflight:staging": "node scripts/release-preflight.mjs --mode=staging",
+    "preflight:production": "node scripts/release-preflight.mjs --mode=production",
+    "smoke:release": "node scripts/release-smoke.mjs",
+    "verify:phase6": "npm run verify:all && npm run test:phase6"
+  },
+  "dependencies": {
+    "next": "^16.4.3",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "@supabase/ssr": "^0.12.7",
+    "@supabase/supabase-js": "^2.118.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "eslint": "^9.0.0",
+    "eslint-config-next": "^16.4.3",
+    "typescript": "^5.9.0"
+  },
+  "engines": {
+    "node": ">=20.9"
+  }
+}

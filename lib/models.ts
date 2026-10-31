@@ -1,0 +1,16 @@
+export type Device = "desktop" | "tablet" | "mobile";
+export type TemplateName = "minimal" | "midnight" | "grid";
+export type BlockType = "Hero" | "ProjectGrid" | "About" | "Skills" | "Text" | "Image" | "Contact" | "Freeform" | "Experience" | "Education" | "Certifications";
+export type Position = {x:number;y:number;w:number;h:number};
+export type FreeformNode = {id:string;text:string;layout:Record<Device,Position>;kind?:"note"|"label"|"button"|"image";src?:string;alt?:string;href?:string;tone?:"light"|"dark"|"accent";hidden?:boolean;locked?:boolean};
+export type Block = { id:string;type:BlockType;props:Record<string,unknown>;hidden?:boolean;style:{paddingY:number;surface:"plain"|"soft"|"contrast";textAlign?:"left"|"center";contentWidth?:"default"|"narrow"|"wide";responsivePadding?:Partial<Record<Device,number>>} };
+export type LayoutDocument = {schemaVersion:1;blocks:Block[]};
+export type SiteContent = {name:string;role:string;heroOne:string;heroTwo:string;intro:string;about:string;email:string;github:string;linkedin:string;skills:string[]};
+export type PortfolioProject = {id:string;title:string;slug:string;category:string;summary:string;tech:string[];github:string;demo:string;
+ category_id?:string|null;problem?:string;solution?:string;contribution?:string;outcome?:string;featured?:boolean;visible?:boolean;coverUrl?:string;gallery?:Array<{url:string;alt:string;caption:string}>};
+import type {ExperienceEntry,EducationEntry,CertificationEntry,SkillGroup} from "./content";
+export type PublishedSnapshot = {schemaVersion:1;template:TemplateName;site:SiteContent;projects:PortfolioProject[];pages:Array<{key:string;title:string;layout:LayoutDocument}>;
+ experience?:ExperienceEntry[];education?:EducationEntry[];certifications?:CertificationEntry[];skillGroups?:SkillGroup[]};
+export type PortfolioRecord = {id:string;owner_id:string;handle:string|null;template:TemplateName;status:"draft"|"published"|"unpublished";created_at?:string;updated_at?:string};
+export type PageRecord = {id:string;portfolio_id:string;page_key:string;title:string;path:string;sort_order:number};
+export type PageDraftRecord = {id:string;page_id:string;layout_json:LayoutDocument;revision:number};
