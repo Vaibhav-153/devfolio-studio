@@ -889,7 +889,7 @@ No. The current editor is written in **React and TypeScript**, with custom CSS a
 
 The hardest problem is **not displaying a portfolio template**. It is designing a secure, multi-user workflow where users can independently manage content, visually edit responsive pages, keep unfinished changes private, and publish or restore a consistent public version without leaking another user's data.
 
-## 26. Contributing, security, and license
+## 26. Contributing, security
 
 ### Maintainer
 
