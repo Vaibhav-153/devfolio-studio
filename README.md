@@ -903,10 +903,6 @@ Before proposing changes, read the architecture and relevant documents under [`d
 
 Do **not** publicly disclose active vulnerabilities or credentials through a GitHub issue. Contact the repository owner privately through a channel they designate. Rotate any accidentally exposed secrets immediately.
 
-### License
-
-**No license file is currently declared in the reviewed repository source.** Until the owner selects and adds a license, do not assume that the code is open-source or grants reuse permissions. Add an appropriate `LICENSE` file if the project is intended for public distribution or outside contributions.
-
 ---
 
 <div align="center">
