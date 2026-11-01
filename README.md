@@ -47,7 +47,7 @@
 23. [Development roadmap](#23-development-roadmap)
 24. [Frequently asked questions](#24-frequently-asked-questions)
 25. [How to explain the project](#25-how-to-explain-the-project)
-26. [Contributing, security, and license](#26-contributing-security-and-license)
+26. [Contributing, security](#26-contributing-security)
 
 ---
 
